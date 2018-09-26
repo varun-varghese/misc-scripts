@@ -1,4 +1,4 @@
-// to celete previous
+// qubole scala script to delete previous days s3 partition
 
 import java.time.Instant
 import java.time.ZoneId
@@ -16,7 +16,7 @@ def getUrl(base: String, date: String): String = {
 val datePartition: String = DateTimeFormatter.ofPattern("yyyyMMdd").format(
     ZonedDateTime.ofInstant(Instant.now(), ZoneId.of("UTC")).minusDays(1))
     
-val bucketUrl: String = getUrl("s3://<bucket>/<path>/dateid=",datePartition)
+val bucketUrl: String = getUrl("s3://<bucket>/<path>/dateid=", datePartition)
 
 val hadoopFs: FileSystem = FileSystem.get(new URI(src), sc.hadoopConfiguration)
 
